@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PCSkinCell">
+            <rect key="frame" x="0.0" y="0.0" width="107" height="229"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="107" height="229"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ITX-tL-Ms8">
+                        <rect key="frame" x="0.0" y="0.0" width="107" height="189.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ITX-tL-Ms8" secondAttribute="height" multiplier="214 / 379" id="ta0-d8-602"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltp-hx-qp5">
+                        <rect key="frame" x="38.5" y="194.5" width="29" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThemeSelect" translatesAutoresizingMaskIntoConstraints="NO" id="pXI-T8-NIG">
+                        <rect key="frame" x="67.5" y="195.5" width="15" height="15"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pXI-T8-NIG" firstAttribute="leading" secondItem="ltp-hx-qp5" secondAttribute="trailing" id="9mH-PW-Tjx"/>
+                <constraint firstItem="ltp-hx-qp5" firstAttribute="centerY" secondItem="pXI-T8-NIG" secondAttribute="centerY" id="LmF-Jg-WCq"/>
+                <constraint firstItem="ltp-hx-qp5" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="P2W-Pg-Y8e"/>
+                <constraint firstAttribute="trailing" secondItem="ITX-tL-Ms8" secondAttribute="trailing" id="l11-TT-SyF"/>
+                <constraint firstItem="ITX-tL-Ms8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lew-1X-mod"/>
+                <constraint firstItem="ltp-hx-qp5" firstAttribute="top" secondItem="ITX-tL-Ms8" secondAttribute="bottom" constant="5" id="nXw-6c-YbU"/>
+                <constraint firstItem="ITX-tL-Ms8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oRj-B9-9cK"/>
+            </constraints>
+            <connections>
+                <outlet property="themeImageView" destination="ITX-tL-Ms8" id="HeY-T8-ocs"/>
+                <outlet property="themeSelectIcon" destination="pXI-T8-NIG" id="svt-1g-Nbo"/>
+                <outlet property="titleLabel" destination="ltp-hx-qp5" id="7SE-y5-lYG"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ThemeSelect" width="15" height="15"/>
+    </resources>
+</document>

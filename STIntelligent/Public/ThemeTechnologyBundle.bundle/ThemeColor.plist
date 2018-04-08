@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>openDoorColor</key>
+	<string>#6DBFE5</string>
+	<key>homeTextColor1</key>
+	<string>#FFFFFF</string>
+	<key>barSelTextColor1</key>
+	<string>#DCA946</string>
+	<key>barNormalTextColor</key>
+	<string>#FFFFFF</string>
+	<key>navBarTextColor</key>
+	<string>#FFFFFF</string>
+	<key>barSelTextColor</key>
+	<string>#6DBFE5</string>
+	<key>homeTextColor</key>
+	<string>#6DBFE5</string>
+	<key>navBarBackColor</key>
+	<string>#202439</string>
+	<key>bottomBarBackColor</key>
+	<string>#20193B</string>
+	<key>controllerViewColor</key>
+	<string>#2C2E51</string>
+	<key>buttonColor</key>
+	<string>#6DBFE5</string>
+</dict>
+</plist>

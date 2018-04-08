@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PCCommunityAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否加入该社区？" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHt-ey-5oH">
+                    <rect key="frame" x="0.0" y="40" width="375" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ti5-MB-Dvt">
+                    <rect key="frame" x="20" y="108" width="152.5" height="40"/>
+                    <color key="backgroundColor" red="0.1915982068" green="0.52296954389999994" blue="0.99931734800000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="rzu-ty-7GC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="确认">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFK-vN-ats">
+                    <rect key="frame" x="202.5" y="108" width="152.5" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="1gr-Ic-ApM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" red="0.086737155910000002" green="0.1019173115" blue="0.18714483079999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eFK-vN-ats" firstAttribute="centerY" secondItem="Ti5-MB-Dvt" secondAttribute="centerY" id="9iD-Rx-AHk"/>
+                <constraint firstItem="eFK-vN-ats" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="15" id="Go2-Xd-ozc"/>
+                <constraint firstAttribute="trailing" secondItem="eFK-vN-ats" secondAttribute="trailing" constant="20" id="NI4-WS-i82"/>
+                <constraint firstItem="GHt-ey-5oH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P7o-oe-6jQ"/>
+                <constraint firstAttribute="trailing" secondItem="GHt-ey-5oH" secondAttribute="trailing" id="Voy-pX-r3g"/>
+                <constraint firstItem="Ti5-MB-Dvt" firstAttribute="top" secondItem="GHt-ey-5oH" secondAttribute="bottom" constant="50" id="mVL-GP-x3u"/>
+                <constraint firstItem="GHt-ey-5oH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="mWE-Ue-v1m"/>
+                <constraint firstItem="Ti5-MB-Dvt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="wI5-bX-ajT"/>
+                <constraint firstItem="Ti5-MB-Dvt" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-15" id="wsQ-Jn-QdD"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cancelBtn" destination="eFK-vN-ats" id="VId-Qr-6gu"/>
+                <outlet property="sureBtn" destination="Ti5-MB-Dvt" id="AWo-2V-iSo"/>
+                <outlet property="titleLabel" destination="GHt-ey-5oH" id="qUT-Q3-15E"/>
+            </connections>
+        </view>
+    </objects>
+</document>

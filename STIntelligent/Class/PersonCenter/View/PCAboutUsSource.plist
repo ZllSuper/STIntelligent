@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>leftTitle</key>
+		<string>微信公众号</string>
+		<key>rightTitle</key>
+		<string>二兔开门</string>
+	</dict>
+	<dict>
+		<key>leftTitle</key>
+		<string>微信订阅号</string>
+		<key>rightTitle</key>
+		<string>二兔家园</string>
+	</dict>
+	<dict>
+		<key>leftTitle</key>
+		<string>公司邮箱</string>
+		<key>rightTitle</key>
+		<string>service@doshine.com</string>
+	</dict>
+	<dict>
+		<key>leftTitle</key>
+		<string>客服电话</string>
+		<key>rightTitle</key>
+		<string>400-820-3150</string>
+	</dict>
+</array>
+</plist>

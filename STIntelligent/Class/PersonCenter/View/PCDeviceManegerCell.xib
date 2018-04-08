@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PCDeviceManegerCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="57.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备用途:猫眼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9K-JW-ccW">
+                        <rect key="frame" x="16" y="10" width="90" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备ID:123133213" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwG-TT-sdA">
+                        <rect key="frame" x="16" y="32" width="117" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUb-4N-mpG">
+                        <rect key="frame" x="244" y="16" width="60" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="38S-jx-r1w"/>
+                            <constraint firstAttribute="width" constant="60" id="bTL-DS-5hP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="删除">
+                            <color key="titleColor" red="0.0" green="0.35942289233207703" blue="0.96402764320373535" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </state>
+                        <connections>
+                            <action selector="delAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W0V-CS-hcV"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ZwG-TT-sdA" firstAttribute="leading" secondItem="A9K-JW-ccW" secondAttribute="leading" id="6xD-jb-PPh"/>
+                    <constraint firstItem="A9K-JW-ccW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="QOu-ee-B1b"/>
+                    <constraint firstAttribute="trailing" secondItem="QUb-4N-mpG" secondAttribute="trailing" constant="16" id="Uoe-nj-EwT"/>
+                    <constraint firstItem="A9K-JW-ccW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="acF-ce-GLR"/>
+                    <constraint firstItem="ZwG-TT-sdA" firstAttribute="top" secondItem="A9K-JW-ccW" secondAttribute="bottom" constant="5" id="rSG-uh-XpL"/>
+                    <constraint firstItem="QUb-4N-mpG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tzv-if-9MH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cardLabel" destination="ZwG-TT-sdA" id="voh-Ul-MS0"/>
+                <outlet property="delButton" destination="QUb-4N-mpG" id="I69-Zv-T23"/>
+                <outlet property="nameLabel" destination="A9K-JW-ccW" id="kqP-YW-m51"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>设备名称</string>
+			<key>valueKey</key>
+			<string></string>
+			<key>cellType</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>设备ICON更换</string>
+			<key>valueKey</key>
+			<string></string>
+			<key>cellType</key>
+			<string>1</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>门铃灯开关</string>
+			<key>valueKey</key>
+			<string>db_light_enable</string>
+			<key>cellType</key>
+			<string>3</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>智能人体检测</string>
+			<key>valueKey</key>
+			<string>alarm_enable</string>
+			<key>cellType</key>
+			<string>3</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>wife网络</string>
+			<key>valueKey</key>
+			<string>wifi_config</string>
+			<key>cellType</key>
+			<string>2</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>系统版本</string>
+			<key>valueKey</key>
+			<string>sw_version</string>
+			<key>cellType</key>
+			<string>2</string>
+		</dict>
+	</array>
+</array>
+</plist>

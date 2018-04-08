@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>themeImage</key>
+		<string>ThemeImage1</string>
+		<key>title</key>
+		<string>默认</string>
+		<key>bundleName</key>
+		<string>MainThemeBundle</string>
+	</dict>
+	<dict>
+		<key>themeImage</key>
+		<string>ThemeImage2</string>
+		<key>title</key>
+		<string>小清新</string>
+		<key>bundleName</key>
+		<string>ThemeTechnologyBundle</string>
+	</dict>
+	<dict>
+		<key>themeImage</key>
+		<string>ThemeImage3</string>
+		<key>title</key>
+		<string>土豪金</string>
+		<key>bundleName</key>
+		<string>ThemeGoldBundle</string>
+	</dict>
+</array>
+</plist>

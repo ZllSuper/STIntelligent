@@ -51,6 +51,9 @@
         make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsZero);
     }];
     
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIApplicationBackgroundFetchIntervalNever;
+    }
     // Do any additional setup after loading the view.
 }
 

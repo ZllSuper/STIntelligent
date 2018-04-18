@@ -243,6 +243,13 @@
             selfWeak.pageControl.numberOfPages = selfWeak.devicePage.count;
             selfWeak.index = selfWeak.devicePage.count - 1;
             
+            if (selfWeak.devicePage.count < 2) {
+                selfWeak.controlView.scrollEnabled = NO;
+            }
+            else {
+                selfWeak.controlView.scrollEnabled = YES;
+            }
+            
             if (completionBlock) {
                 completionBlock (YES);
             }
@@ -319,6 +326,13 @@
     self.controlView.sourceAry = self.devicePage;
     self.pageControl.numberOfPages = self.devicePage.count;
     self.pageControl.currentPage = 0;
+    
+    if (self.devicePage.count < 2) {
+        self.controlView.scrollEnabled = NO;
+    }
+    else {
+        self.controlView.scrollEnabled = YES;
+    }
 }
 
 
@@ -418,6 +432,13 @@
         [selfWeak.controlView reloadData];
         selfWeak.pageControl.numberOfPages = selfWeak.devicePage.count;
         selfWeak.index = selfWeak.pageControl.currentPage;
+        
+        if (selfWeak.devicePage.count < 2) {
+            selfWeak.controlView.scrollEnabled = NO;
+        }
+        else {
+            selfWeak.controlView.scrollEnabled = YES;
+        }
     }];
 }
 

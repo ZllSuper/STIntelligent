@@ -16,6 +16,8 @@
 		65AA0984201AE804006EBB0E /* open_door_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 65AA097B201AE804006EBB0E /* open_door_8.png */; };
 		65AA0985201AE804006EBB0E /* open_door_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 65AA097C201AE804006EBB0E /* open_door_1.png */; };
 		65AA0986201AE804006EBB0E /* open_door_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 65AA097D201AE804006EBB0E /* open_door_6.png */; };
+		65B9C65B208D6C300083FEF7 /* AuthorizationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B9C65A208D6C300083FEF7 /* AuthorizationHandler.m */; };
+		65B9C65E208D6C8E0083FEF7 /* UIAlertView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B9C65D208D6C8D0083FEF7 /* UIAlertView+Common.m */; };
 		A6002C731EEE1E4E008C8A98 /* ThemeTechnologyBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6002C721EEE1E4E008C8A98 /* ThemeTechnologyBundle.bundle */; };
 		A6015C301F3C920C00A07E94 /* DeviceEditNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6015C2F1F3C920C00A07E94 /* DeviceEditNameViewController.m */; };
 		A6015C331F3C92A000A07E94 /* DeviceEditNameRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A6015C321F3C92A000A07E94 /* DeviceEditNameRequest.m */; };
@@ -421,6 +423,10 @@
 		65AA097B201AE804006EBB0E /* open_door_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_door_8.png; sourceTree = "<group>"; };
 		65AA097C201AE804006EBB0E /* open_door_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_door_1.png; sourceTree = "<group>"; };
 		65AA097D201AE804006EBB0E /* open_door_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_door_6.png; sourceTree = "<group>"; };
+		65B9C659208D6C2F0083FEF7 /* AuthorizationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationHandler.h; sourceTree = "<group>"; };
+		65B9C65A208D6C300083FEF7 /* AuthorizationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationHandler.m; sourceTree = "<group>"; };
+		65B9C65C208D6C8D0083FEF7 /* UIAlertView+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Common.h"; sourceTree = "<group>"; };
+		65B9C65D208D6C8D0083FEF7 /* UIAlertView+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Common.m"; sourceTree = "<group>"; };
 		A6002C721EEE1E4E008C8A98 /* ThemeTechnologyBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ThemeTechnologyBundle.bundle; sourceTree = "<group>"; };
 		A6015C2E1F3C920C00A07E94 /* DeviceEditNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEditNameViewController.h; sourceTree = "<group>"; };
 		A6015C2F1F3C920C00A07E94 /* DeviceEditNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceEditNameViewController.m; sourceTree = "<group>"; };
@@ -1543,6 +1549,10 @@
 		A60EE24B1EC00FEB00C8F00E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				65B9C659208D6C2F0083FEF7 /* AuthorizationHandler.h */,
+				65B9C65A208D6C300083FEF7 /* AuthorizationHandler.m */,
+				65B9C65C208D6C8D0083FEF7 /* UIAlertView+Common.h */,
+				65B9C65D208D6C8D0083FEF7 /* UIAlertView+Common.m */,
 				A6BB6CBE1EF7A318007EB5C9 /* BXHResponse+ResultAnaly.h */,
 				A6BB6CBF1EF7A318007EB5C9 /* BXHResponse+ResultAnaly.m */,
 				A60EE24E1EC00FEB00C8F00E /* BaseNaviController.h */,
@@ -3057,6 +3067,7 @@
 				A671BE1D1F8C8C8D00A395AC /* APAuthV2Info.m in Sources */,
 				A60EE2D11EC00FEB00C8F00E /* NSData+BXHMyData.m in Sources */,
 				A6B062051EC34AD800BDE30F /* PCAuthCell.m in Sources */,
+				65B9C65B208D6C300083FEF7 /* AuthorizationHandler.m in Sources */,
 				A646D9821F2EEFA2005774DC /* HomeSceneListRequest.m in Sources */,
 				A60854A51F42D73500AD48FD /* AboutUsViewController.m in Sources */,
 				A60EE2D71EC00FEB00C8F00E /* NSString+BXHMyString.m in Sources */,
@@ -3164,6 +3175,7 @@
 				A60769761F302D0900A21A31 /* MaoYanDelRequest.m in Sources */,
 				A65F8A051F6778180054C227 /* HomePageControlView.m in Sources */,
 				A6FF226B1F15C2B20008A84A /* ODTemporaryOpenDoorRequest.m in Sources */,
+				65B9C65E208D6C8E0083FEF7 /* UIAlertView+Common.m in Sources */,
 				A60EE4291EC0135700C8F00E /* MASConstraintMaker.m in Sources */,
 				A60EE4451EC0135700C8F00E /* UIScrollView+MJExtension.m in Sources */,
 				A60EE44D1EC0135700C8F00E /* UIView+MLInputDodger.m in Sources */,

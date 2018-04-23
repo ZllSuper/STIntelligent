@@ -12,8 +12,10 @@
 #import "DeviceControlBtn.h"
 
 #import "EZOpenSDKHeader.h"
+#import "AuthorizationHandler.h"
+#import "UIAlertView+Common.h"
 
-@interface CameraDeviceVedioViewController () <EZPlayerDelegate>
+@interface CameraDeviceVedioViewController () <EZPlayerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UILabel *timeLabel;
 
@@ -228,8 +230,19 @@
 #pragma mark - action
 - (void)oneBtnAction
 {
-    UIImage *image = [self.player capturePicture:100];
-    [self saveImageToPhotosAlbum:image];
+    [AuthorizationHandler checkPhotoLibraryAuthorization:^(BOOL success, PHAuthorizationStatus status) {
+        if (success) {
+            UIImage *image = [self.player capturePicture:100];
+            [self saveImageToPhotosAlbum:image];
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                UIAlertView *alert = [UIAlertView alertWithTitle:@"提示" message:@"请先从手机系统【设置】→【隐私】→【照片】中开启相册权限" delegate:self cancelButtonTitle:@"知道啦" otherButtonTitles:@"立刻更改",nil];
+                alert.tag = 100;
+                [alert show];
+            });
+        }
+    }];
 }
 
 - (void)twoBtnAction
@@ -262,46 +275,57 @@
                 //回调或者说是通知主线程刷新，
                 weakSelf.filePath = nil;
                 ProgressHidden(weakSelf.view);
+                weakSelf.threeBtn.selected = !weakSelf.threeBtn.selected;
             });
-        });
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-           
         });
     }
     else
     {
-        //开始本地录像
-        NSString *path = @"/OpenSDK/EzvizLocalRecord";
-        
-        NSArray * docdirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString * docdir = [docdirs objectAtIndex:0];
-        
-        NSString * configFilePath = [docdir stringByAppendingPathComponent:path];
-        if(![[NSFileManager defaultManager] fileExistsAtPath:configFilePath])
-        {
-            NSError *error = nil;
-            [[NSFileManager defaultManager] createDirectoryAtPath:configFilePath
-                                      withIntermediateDirectories:YES
-                                                       attributes:nil
-                                                            error:&error];
-        }
-        NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
-        dateformatter.dateFormat = @"yyyyMMddHHmmssSSS";
-        self.filePath = [NSString stringWithFormat:@"%@/%@.mov",configFilePath,[dateformatter stringFromDate:[NSDate date]]];
-        self.fileData = [NSMutableData new];
-        
-        __weak __typeof(self) weakSelf = self;
-        ToastShowBottom(@"录制开始");
-        [self.player startLocalRecord:^(NSData *data) {
-            
-            if (!data || !weakSelf.fileData)
-            {
-                return;
+        [AuthorizationHandler checkPhotoLibraryAuthorization:^(BOOL success, PHAuthorizationStatus status) {
+            if (success) {
+                //开始本地录像
+                NSString *path = @"/OpenSDK/EzvizLocalRecord";
+                
+                NSArray * docdirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                NSString * docdir = [docdirs objectAtIndex:0];
+                
+                NSString * configFilePath = [docdir stringByAppendingPathComponent:path];
+                if(![[NSFileManager defaultManager] fileExistsAtPath:configFilePath])
+                {
+                    NSError *error = nil;
+                    [[NSFileManager defaultManager] createDirectoryAtPath:configFilePath
+                                              withIntermediateDirectories:YES
+                                                               attributes:nil
+                                                                    error:&error];
+                }
+                NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+                dateformatter.dateFormat = @"yyyyMMddHHmmssSSS";
+                self.filePath = [NSString stringWithFormat:@"%@/%@.mov",configFilePath,[dateformatter stringFromDate:[NSDate date]]];
+                self.fileData = [NSMutableData new];
+                
+                __weak __typeof(self) weakSelf = self;
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    ToastShowBottom(@"录制开始");
+                    weakSelf.threeBtn.selected = !weakSelf.threeBtn.selected;
+                });
+                [self.player startLocalRecord:^(NSData *data) {
+                    
+                    if (!data || !weakSelf.fileData)
+                    {
+                        return;
+                    }
+                    [weakSelf.fileData appendData:data];
+                }];
             }
-            [weakSelf.fileData appendData:data];
+            else {
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    UIAlertView *alert = [UIAlertView alertWithTitle:@"提示" message:@"请先从手机系统【设置】→【隐私】→【照片】中开启相册权限" delegate:self cancelButtonTitle:@"知道啦" otherButtonTitles:@"立刻更改",nil];
+                    alert.tag = 100;
+                    [alert show];
+                });
+            }
         }];
     }
-    self.threeBtn.selected = !self.threeBtn.selected;
 }
 
 - (void)fourBtnAction
@@ -459,15 +483,17 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100) {
+        if (buttonIndex == 1) {
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }
+    }
 }
-*/
 
 @end

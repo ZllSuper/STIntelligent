@@ -12,8 +12,10 @@
 #import "DeviceControlBtn.h"
 
 #import <EquesBusiness/YKBusinessFramework.h>
+#import "AuthorizationHandler.h"
+#import "UIAlertView+Common.h"
 
-@interface DeviceVideoViewController () <EquesBusinessHelperProtcol>
+@interface DeviceVideoViewController () <EquesBusinessHelperProtcol,UIAlertViewDelegate>
 
 @property (nonatomic, strong) UILabel *timeLabel;
 
@@ -263,36 +265,47 @@
 #pragma mark - action
 - (void)oneBtnAction
 {
-    if (StringIsEmpty(self.maoYanModel.bid)|| StringIsEmpty(self.sid))
-    {
-        return;
-    }
-    
-    if (!self.lock)
-    {
-        self.lock = [[NSLock alloc] init];
-    }
-    
-    [self.lock lock];
-    
-    //获取Documents文件夹目录
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath = [path objectAtIndex:0];
-    //获取文件管理器
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    //指定新建文件夹路径
-    NSString *imageDocPath = [documentPath stringByAppendingPathComponent:@"ImageFile"];
-    if (![fileManager isExecutableFileAtPath:imageDocPath])
-    {
-        //创建ImageFile文件夹
-        [fileManager createDirectoryAtPath:imageDocPath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    //返回保存图片的路径（图片保存在ImageFile文件夹下）
-    NSString * imagePath = [imageDocPath stringByAppendingPathComponent:@"capture.jpg"];
-    [YKBusinessFramework equesSnapCapture:5 fileurl:imagePath];
-    UIImage *img = [UIImage imageWithContentsOfFile:imagePath];
-
-    [self saveImageToPhoto:img];
+    [AuthorizationHandler checkPhotoLibraryAuthorization:^(BOOL success, PHAuthorizationStatus status) {
+        if (success) {
+            if (StringIsEmpty(self.maoYanModel.bid)|| StringIsEmpty(self.sid))
+            {
+                return;
+            }
+            
+            if (!self.lock)
+            {
+                self.lock = [[NSLock alloc] init];
+            }
+            
+            [self.lock lock];
+            
+            //获取Documents文件夹目录
+            NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentPath = [path objectAtIndex:0];
+            //获取文件管理器
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            //指定新建文件夹路径
+            NSString *imageDocPath = [documentPath stringByAppendingPathComponent:@"ImageFile"];
+            if (![fileManager isExecutableFileAtPath:imageDocPath])
+            {
+                //创建ImageFile文件夹
+                [fileManager createDirectoryAtPath:imageDocPath withIntermediateDirectories:YES attributes:nil error:nil];
+            }
+            //返回保存图片的路径（图片保存在ImageFile文件夹下）
+            NSString * imagePath = [imageDocPath stringByAppendingPathComponent:@"capture.jpg"];
+            [YKBusinessFramework equesSnapCapture:5 fileurl:imagePath];
+            UIImage *img = [UIImage imageWithContentsOfFile:imagePath];
+            
+            [self saveImageToPhoto:img];
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                UIAlertView *alert = [UIAlertView alertWithTitle:@"提示" message:@"请先从手机系统【设置】→【隐私】→【照片】中开启相册权限" delegate:self cancelButtonTitle:@"知道啦" otherButtonTitles:@"立刻更改",nil];
+                alert.tag = 100;
+                [alert show];
+            });
+        }
+    }];
 }
 
 - (void)twoBtnAction
@@ -509,14 +522,17 @@
 
 
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100) {
+        if (buttonIndex == 1) {
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }
+    }
+}
 
 @end

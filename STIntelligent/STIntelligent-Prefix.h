@@ -29,6 +29,7 @@
 
 #import "ColorMap.h"
 #import "Define.h"
+#import "NotificationDefine.h"
 #import "FontMap.h"
 #import "InterfaceMap.h"
 

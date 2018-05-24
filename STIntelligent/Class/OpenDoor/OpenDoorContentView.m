@@ -35,7 +35,7 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
         
         [self addSubview:self.menu];
         [self.menu mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -95,6 +95,7 @@
         }
         OpenDoorMenuItem *item = [[OpenDoorMenuItem alloc] init];
         item.titleLabel.text = name;
+//        item.titleLabel.text = @"将卡的发生看了就发烧发烧发撒点发送到发送到发送方式将卡的发生看了就发烧发烧发撒点发送到发送到发送方式";
         item.subTitleLabel.text = StringIsEmpty([nameAry lastObject]) ? @"门" : [nameAry lastObject];
         item.weakModel = doorModel;
         [items addObject:item];

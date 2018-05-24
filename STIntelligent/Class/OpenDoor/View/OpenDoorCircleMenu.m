@@ -33,6 +33,7 @@
 {
     if (self = [super init])
     {
+        self.clipsToBounds = NO;
         self.backgroundColor = Color_Clear;
         self.itemSize = size;
         self.showsHorizontalScrollIndicator = NO;

@@ -110,6 +110,8 @@
         {
             AddCameraCompleteViewController *vc = [[AddCameraCompleteViewController alloc] init];
             [selfWeak.navigationController pushViewController:vc animated:YES];
+            
+            POST_NOTIFICATION(kRefreshHomePageNotification, nil);
         }
         else
         {

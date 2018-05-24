@@ -16,6 +16,7 @@
     {
         [self creatHeader];
         [self registerNib:[UINib nibWithNibName:[PCDeviceManegerCell className] bundle:nil] forCellReuseIdentifier:[PCDeviceManegerCell className]];
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
@@ -62,6 +63,8 @@
         {
             [selfWeak.soureAry removeObject:blockModel];
             [selfWeak reloadData];
+            
+            POST_NOTIFICATION(kRefreshHomePageNotification, nil);
         }
         else
         {
@@ -86,6 +89,8 @@
         {
             [selfWeak.soureAry removeObject:blockModel];
             [selfWeak reloadData];
+            
+            POST_NOTIFICATION(kRefreshHomePageNotification, nil);
         }
         else
         {

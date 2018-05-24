@@ -110,6 +110,8 @@
             {
                 [selfWeak sceneDeleteRequest];
             }
+            
+            POST_NOTIFICATION(kRefreshHomePageNotification, nil);
         }
         else
         {

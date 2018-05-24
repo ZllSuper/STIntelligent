@@ -101,19 +101,19 @@
     return sectionAry.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 8;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    if (section == 1)
-    {
-        return 40;
-    }
-    return 0.1;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 8;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    if (section == 1)
+//    {
+//        return 40;
+//    }
+//    return 0.1;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -162,8 +162,17 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.tableFooterView = self.bottomBtn;
+//        _tableView.tableFooterView = self.bottomBtn;
         [_tableView registerNib:[UINib nibWithNibName:@"DeviceSettingRightCell" bundle:nil] forCellReuseIdentifier:@"PCSettingCell"];
+        
+        _tableView.sectionHeaderHeight = CGFLOAT_MIN;
+        _tableView.sectionFooterHeight = 10;
+        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 10)];
+        _tableView.tableFooterView = self.bottomBtn;
+        
+        if (@available(iOS 11, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _tableView;
 }

@@ -59,8 +59,8 @@
     
     [self.cameraImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
-        make.size.mas_equalTo(CGSizeMake(220, 220));
-        make.top.mas_equalTo(self.view).offset(30);
+        make.size.mas_equalTo(CGSizeMake(DEF_SCREENWIDTH/3, DEF_SCREENWIDTH/3));
+        make.centerY.mas_equalTo(self.view).offset(-80);
     }];
     
     [self.tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -111,6 +111,8 @@
         {
             AddCameraCompleteViewController *vc = [[AddCameraCompleteViewController alloc] init];
             [selfWeak.navigationController pushViewController:vc animated:YES];
+            
+            POST_NOTIFICATION(kRefreshHomePageNotification, nil);
         }
         else
         {

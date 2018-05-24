@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"开门记录";
+    self.title = @"临时邀请记录";
     
     [self.view addSubview:self.bottomBtn];
     [self.bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -62,7 +62,7 @@
 {
     if (!_tableView)
     {
-        _tableView = [[TemporaryHistoryTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[TemporaryHistoryTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     }
     return _tableView;
 }

@@ -34,14 +34,15 @@
     
     [self.view addSubview:self.searchBar];
     [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.top.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view).offset(10);
+        make.left.and.right.and.mas_equalTo(self.view);
         make.height.mas_equalTo(@40);
     }];
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.searchBar.mas_bottom);
+        make.top.mas_equalTo(self.searchBar.mas_bottom).offset(10);
     }];
     // Do any additional setup after loading the view.
 }
@@ -101,15 +102,15 @@
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0.1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 8;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 0.1;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 8;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -163,7 +164,7 @@
 {
     if (!_tableView)
     {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

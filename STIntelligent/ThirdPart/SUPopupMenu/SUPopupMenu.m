@@ -167,8 +167,14 @@
         [itemButton setBackgroundImage:ImageWithColor([UIColor getHexColorWithHexStr: @"#f1f1f1"])  forState: UIControlStateHighlighted];
         [itemButton.titleLabel setFont: [UIFont systemFontOfSize: 14]];
         [itemButton setTitleColor: [UIColor blackColor] forState: UIControlStateNormal];
-        [itemButton setTitle: titles[i] forState: UIControlStateNormal];
+//        [itemButton setTitle: titles[i] forState: UIControlStateNormal];
         [itemButton setImage: icons[i] forState: UIControlStateNormal];
+        
+        UILabel *itemLabel = [[UILabel alloc] initWithFrame:itemButton.bounds];
+        itemLabel.text = titles[i];
+        itemLabel.textAlignment = NSTextAlignmentCenter;
+        itemLabel.font = [UIFont systemFontOfSize: 14];
+        [itemButton addSubview:itemLabel];
         
         if (icons.count != 0) {
             

@@ -101,7 +101,7 @@
     
     if (StringIsEmpty(ssid))
     {
-        ToastShowBottom(@"确保手机连接WIFI");
+        ToastShowBottom(@"确保手机已连接到wifi");
         return;
     }
     

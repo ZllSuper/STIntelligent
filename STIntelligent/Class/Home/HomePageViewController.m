@@ -51,6 +51,7 @@
 @property (nonatomic, weak) MaoYanModel *actionMaoYanModel;
 
 @property (nonatomic, strong) SUPopupMenu *popupView;
+@property (nonatomic, strong) SUPopupMenu *popupView1;
 
 @property (nonatomic, strong) NSMutableArray *sceneNameAry;
 
@@ -245,9 +246,11 @@
             
             if (selfWeak.devicePage.count < 2) {
                 selfWeak.controlView.scrollEnabled = NO;
+                selfWeak.pageControl.hidden = YES;
             }
             else {
                 selfWeak.controlView.scrollEnabled = YES;
+                selfWeak.pageControl.hidden = NO;
             }
             
             if (completionBlock) {
@@ -329,9 +332,11 @@
     
     if (self.devicePage.count < 2) {
         self.controlView.scrollEnabled = NO;
+        self.pageControl.hidden = YES;
     }
     else {
         self.controlView.scrollEnabled = YES;
+        self.pageControl.hidden = NO;
     }
 }
 
@@ -407,7 +412,12 @@
 #pragma mark - action
 - (void)rightBtnAction
 {
-    [self.popupView presentWithAnchorPoint:CGPointMake(DEF_SCREENWIDTH - 30, 60)];
+    if (self.devicePage.count < 2) {
+        [self.popupView1 presentWithAnchorPoint:CGPointMake(DEF_SCREENWIDTH - 30, 60)];
+    }
+    else {
+        [self.popupView presentWithAnchorPoint:CGPointMake(DEF_SCREENWIDTH - 30, 60)];
+    }
 }
 
 - (void)titleBtnAction
@@ -435,9 +445,11 @@
         
         if (selfWeak.devicePage.count < 2) {
             selfWeak.controlView.scrollEnabled = NO;
+            selfWeak.pageControl.hidden = YES;
         }
         else {
             selfWeak.controlView.scrollEnabled = YES;
+            selfWeak.pageControl.hidden = NO;
         }
     }];
 }
@@ -480,6 +492,12 @@
 #pragma mark - AlertProtcol
 - (void)bxhAlertViewController:(BXHSTAlertViewController *)vc clickIndex:(NSInteger)index
 {
+    NSString *scene = [(HomeTextFieldAlert *)vc.contentView inputTextFiled].text;
+    if (StringIsEmpty(scene)) {
+        ToastShowCenter(@"请输入场景名称");
+        return;
+    }
+    
     if (self.addPage)
     {
         [self sceneAddRequestWithName:[(HomeTextFieldAlert *)vc.contentView inputTextFiled].text completionBlock:^(BOOL success) {
@@ -686,6 +704,13 @@
     _popupView = [[SUPopupMenu alloc] initWithTitles:@[@"新建场景",@"编辑当前场景",@"删除当前场景"] icons: nil menuItemSize:CGSizeMake(110, 40)];
     _popupView.delegate = self;
     return _popupView;
+}
+
+- (SUPopupMenu *)popupView1
+{
+    _popupView1 = [[SUPopupMenu alloc] initWithTitles:@[@"新建场景",@"编辑当前场景"] icons: nil menuItemSize:CGSizeMake(110, 40)];
+    _popupView1.delegate = self;
+    return _popupView1;
 }
 
 - (UIPageControl *)pageControl

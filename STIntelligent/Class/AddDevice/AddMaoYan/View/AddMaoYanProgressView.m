@@ -46,10 +46,11 @@
         }];
         
         [self.foregoundProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.backProgressView).offset(unit / 2);
+            make.left.mas_equalTo(self.backProgressView);
             make.centerY.mas_equalTo(self.backProgressView);
             make.height.mas_equalTo(@3);
-            make.width.mas_equalTo(@(unit * (self.mark + 1) - unit / 2 * ((self.mark == 4) ? 2 : 1)));
+//            make.width.mas_equalTo(@(unit * (self.mark + 1) - unit / 2 * ((self.mark == 4) ? 2 : 1)));
+            make.width.mas_equalTo(@(unit * (self.mark + 1)));
         }];
         
         [self.markOneLabel mas_makeConstraints:^(MASConstraintMaker *make) {

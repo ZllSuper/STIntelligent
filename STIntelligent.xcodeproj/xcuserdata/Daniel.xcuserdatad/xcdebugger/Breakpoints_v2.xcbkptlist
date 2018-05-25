@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "STIntelligent/Class/Home/DevicePicViewController.m"
-            timestampString = "544522174.487958"
+            filePath = "STIntelligent/Class/AddDevice/AddMaoYan/AddMaoYanPrepareViewController.m"
+            timestampString = "548663472.186533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-updateAction"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-nextStepAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

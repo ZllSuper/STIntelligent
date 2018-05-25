@@ -53,6 +53,12 @@
             make.width.mas_equalTo(120);
         }];
         
+        [self.titleButton addSubview:self.titleLabel];
+        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.left.mas_equalTo(self.titleButton);
+            make.right.mas_equalTo(self.titleButton).offset(-10);
+        }];
+        
         [self addSubview:self.animateImageView];
         [self.animateImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self);
@@ -81,7 +87,8 @@
 
 - (void)communityInit
 {
-    [self.titleButton setTitle:self.selModel.comName forState:UIControlStateNormal];
+    self.titleLabel.text = self.selModel.comName;
+//    [self.titleButton setTitle:self.selModel.comName forState:UIControlStateNormal];
     NSMutableArray *items = [NSMutableArray array];
     for (int i = 0; i < self.selModel.doorListAll.count; i ++)
     {
@@ -307,6 +314,18 @@
         [_titleButton addTarget:self action:@selector(titleBtnAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _titleButton;
+}
+
+- (UILabel *)titleLabel
+{
+    if (!_titleLabel)
+    {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.font = Font_sys_17;
+        _titleLabel.textColor = [UIColor whiteColor];
+    }
+    return _titleLabel;
 }
 
 - (SUPopupMenu *)popupView

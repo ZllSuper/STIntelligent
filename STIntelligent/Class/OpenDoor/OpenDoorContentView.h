@@ -17,6 +17,7 @@
 @property (nonatomic, strong) OpenDoorCircleMenu *menu;
 
 @property (nonatomic, strong) UIButton *titleButton;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 @property (nonatomic, strong) SUPopupMenu *popupView;
 

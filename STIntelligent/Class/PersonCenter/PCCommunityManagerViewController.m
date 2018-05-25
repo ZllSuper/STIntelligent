@@ -75,7 +75,7 @@
 {
     if (!_tableView)
     {
-        _tableView = [[PCCommunityManagerTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[PCCommunityManagerTableView alloc] initWithFrame:CGRectZero];
     }
     return _tableView;
 }

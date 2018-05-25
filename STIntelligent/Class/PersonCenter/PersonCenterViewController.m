@@ -19,6 +19,7 @@
 #import "PersonCenterHeaderView.h"
 
 #import "PCInviteDoorCountRequest.h"
+#import "UIImageView+WebCache.h"
 
 
 @interface PersonCenterViewController () <UITableViewDelegate, UITableViewDataSource,STThemeManagerProtcol>
@@ -64,7 +65,9 @@
     self.headerView.nameLabel.text = StringIsEmpty(KAccountInfo.name) ? KAccountInfo.phone : KAccountInfo.name;
     if (!StringIsEmpty(KAccountInfo.photo))
     {
-        [self.headerView.headerImageView bxh_imageWithUrlStr:KAccountInfo.photo placeholderImage:ImageWithName(@"PersonCenterHeaderDefault")];
+        NSLog(@"KAccountInfo.photo:%@", KAccountInfo.photo);
+//        [self.headerView.headerImageView bxh_imageWithUrlStr:KAccountInfo.photo placeholderImage:ImageWithName(@"PersonCenterHeaderDefault")];
+        [self.headerView.headerImageView sd_setImageWithURL:[NSURL URLWithString:KAccountInfo.photo] placeholderImage:ImageWithName(@"PersonCenterHeaderDefault")];
     }
     else
     {

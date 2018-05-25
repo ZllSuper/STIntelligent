@@ -24,6 +24,9 @@
                                   target:(id)target
                                   action:(SEL)action;
 
+- (UIButton *)creatLeftNavigationItemWithImage:(UIImage *)image
+                                        target:(id)target
+                                        action:(SEL)action;
 
 - (UIButton *)creatRightNavigationItemWithImage:(UIImage *)image
                                   target:(id)target

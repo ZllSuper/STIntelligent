@@ -11,6 +11,11 @@
 
 @implementation PCCommunityManagerTableView
 
+- (void)dealloc
+{
+    REMOVE_NOTIFICATION(kRefreshCommunityListNotification, nil);
+}
+
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
     if (self = [super initWithFrame:frame style:style])
@@ -19,6 +24,8 @@
         [self creatHeader];
         [self creatFooter];
         [self registerNib:[UINib nibWithNibName:[PCCommunityManagerCell className] bundle:nil] forCellReuseIdentifier:[PCCommunityManagerCell className]];
+        
+        ADD_NOTIFICATIOM(@selector(refreshListNoti), kRefreshCommunityListNotification, nil);
     }
     return self;
 }
@@ -34,8 +41,19 @@
         [self endRefresh];
         if ([request.response.code integerValue] == 200)
         {
+            if (refresh) {
+                [selfWeak.soureAry removeAllObjects];
+            }
             
-            selfWeak.soureAry = [PCCommunityListModel bxhObjectArrayWithKeyValuesArray:request.response.data];
+            [selfWeak.soureAry addObjectsFromArray:[PCCommunityListModel bxhObjectArrayWithKeyValuesArray:request.response.data]];
+            
+            if (selfWeak.soureAry.count < ListPageSize) {
+                [selfWeak configDataIsEnd:YES];
+            }
+            else {
+                [selfWeak configDataIsEnd:NO];
+            }
+            
             [selfWeak reloadData];
         }
         else
@@ -60,15 +78,15 @@
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 8;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.1;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 8;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 0.1;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -83,12 +101,10 @@
     return cell;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark Notifications
+- (void)refreshListNoti
+{
+    [self requestViewSource:YES];
 }
-*/
 
 @end

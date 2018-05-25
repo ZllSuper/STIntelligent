@@ -45,6 +45,19 @@
 
 }
 
+- (UIButton *)creatLeftNavigationItemWithImage:(UIImage *)image
+                                         target:(id)target
+                                         action:(SEL)action
+{
+    UIButton * itemBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    itemBtn.frame = CGRectMake(0, 0, 40, 30);
+    [itemBtn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    [itemBtn setImage:image forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:itemBtn];
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:Color_MainText,NSFontAttributeName:Font_sys_14} forState:UIControlStateNormal];
+    return itemBtn;
+}
+
 - (UIButton *)creatRightNavigationItemWithImage:(UIImage *)image
                                   target:(id)target
                                   action:(SEL)action

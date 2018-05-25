@@ -114,7 +114,7 @@
 {
     if (!_tableView)
     {
-        _tableView = [[PCDeviceManagerTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[PCDeviceManagerTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     }
     return _tableView;
 }

@@ -16,8 +16,17 @@
     {
         [self creatHeader];
         [self registerNib:[UINib nibWithNibName:[ViceCardHistoryCell className] bundle:nil] forCellReuseIdentifier:[ViceCardHistoryCell className]];
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        ADD_NOTIFICATIOM(@selector(refreshViceCardListNoti), kRefreshViceCardListNotification, nil);
+
     }
     return self;
+}
+
+- (void)dealloc
+{
+    REMOVE_NOTIFICATION(kRefreshViceCardListNotification, nil);
 }
 
 - (void)requestViewSource:(BOOL)refresh
@@ -117,12 +126,10 @@
 }
 
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark Notifications
+- (void)refreshViceCardListNoti
+{
+    [self requestViewSource:YES];
 }
-*/
 
 @end

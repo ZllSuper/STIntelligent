@@ -66,8 +66,14 @@
         self.index = 0;
         
         self.devicePage = [NSMutableArray array];
+        ADD_NOTIFICATIOM(@selector(sceneListRequest), kRefreshHomePageNotification, nil);
     }
     return self;
+}
+
+- (void)dealloc
+{
+    REMOVE_NOTIFICATION(kRefreshHomePageNotification, nil);
 }
 
 - (void)viewDidLoad
@@ -131,10 +137,13 @@
             {
                 ProgressHidden(selfWeak.view);
             }
+            
+            [selfWeak.devicePage removeAllObjects];
             [selfWeak.devicePage addObjectsFromArray:[DeveicePageModel bxhObjectArrayWithKeyValuesArray:request.response.data]];
             
             [selfWeak creatHomeViewController];
             selfWeak.index = 0;
+            [selfWeak.controlView reloadData];
         }
         else
         {
@@ -345,7 +354,7 @@
 {
     if (!StringIsEmpty(cameraModel.deviceSerialNo))
     {
-        pageModel.defaultIndex = [self cameraIndex:pageModel cameraModel:cameraModel];
+        pageModel.defaultIndex = (int)[self cameraIndex:pageModel cameraModel:cameraModel];
         [EZOpenSDK setAccessToken:KAccountInfo.cameraAccessToken];
         CameraDeviceVedioViewController *vc = [[CameraDeviceVedioViewController alloc] init];
         vc.cameraModel = cameraModel;

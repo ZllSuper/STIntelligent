@@ -60,6 +60,13 @@
     
     self.title = @"实时视频";
     
+    UIButton * backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:ThemeImageWithName(@"PublicBackArrow") forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(navLeftBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    backButton.frame = CGRectMake(0, 0, 19, 25);
+    [backButton setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 5)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
     [self creatRightNavigationItemWithImage:ThemeImageWithName(@"VedioSetIcon") target:self action:@selector(rightBtnAction)];
     
     self.view.backgroundColor = [UIColor getHexColorWithHexStr:[STThemeManager shareInstance].themeColor.controllerViewColor];
@@ -333,6 +340,10 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)navLeftBtnAction
+{
+    [self fourBtnAction];
+}
 
 - (void)rightBtnAction
 {

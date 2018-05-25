@@ -118,8 +118,9 @@
     
     
     //设置返回默认值
-    self.stateStr = _dataSource[0];
-    
+    if (_dataSource.count > 0) {
+        self.stateStr = _dataSource[0];
+    }
     
     //刷新轱辘数据
     [self.statePicker reloadAllComponents];
@@ -170,7 +171,9 @@
 /**点击完成按钮*/
 - (void)finishBtnClicked:(UIButton *)button
 {
-    self.valueDidSelect([self.dataSource indexOfObject:self.stateStr]);
+    if (self.dataSource.count > 0) {
+        self.valueDidSelect([self.dataSource indexOfObject:self.stateStr]);
+    }
     [self removeSelfFromSupView];
 }
 

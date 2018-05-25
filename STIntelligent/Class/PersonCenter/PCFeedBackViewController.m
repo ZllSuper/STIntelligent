@@ -131,7 +131,7 @@
     {
         _bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _bottomBtn.backgroundColor = [UIColor getHexColorWithHexStr:[STThemeManager shareInstance].themeColor.buttonColor];
-        [_bottomBtn setTitle:@"意见反馈" forState:UIControlStateNormal];
+        [_bottomBtn setTitle:@"提交" forState:UIControlStateNormal];
         [_bottomBtn setTitleColor:Color_White forState:UIControlStateNormal];
         _bottomBtn.layer.cornerRadius = 4;
         _bottomBtn.clipsToBounds = YES;

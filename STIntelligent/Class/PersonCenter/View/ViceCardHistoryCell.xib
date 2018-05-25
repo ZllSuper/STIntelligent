@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,14 +41,24 @@
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqK-pY-Sjm">
+                        <rect key="frame" x="0.0" y="62.5" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="0QF-XF-FXd"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ryr-Iq-ZoR" secondAttribute="trailing" constant="16" id="3xK-uo-86d"/>
                     <constraint firstItem="RUM-co-JOz" firstAttribute="leading" secondItem="3qh-ka-U7P" secondAttribute="leading" id="4lf-1h-gRA"/>
                     <constraint firstItem="ryr-Iq-ZoR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4oo-Td-gN3"/>
                     <constraint firstItem="3qh-ka-U7P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="BH4-mO-leq"/>
+                    <constraint firstAttribute="bottom" secondItem="yqK-pY-Sjm" secondAttribute="bottom" id="jWI-lS-h6T"/>
                     <constraint firstItem="RUM-co-JOz" firstAttribute="top" secondItem="3qh-ka-U7P" secondAttribute="bottom" constant="10" id="sqH-iS-zAH"/>
                     <constraint firstItem="3qh-ka-U7P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="uz0-ft-6jU"/>
+                    <constraint firstItem="yqK-pY-Sjm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vnp-pQ-bLh"/>
+                    <constraint firstAttribute="trailing" secondItem="yqK-pY-Sjm" secondAttribute="trailing" id="wDs-W1-tpr"/>
                     <constraint firstItem="RUM-co-JOz" firstAttribute="trailing" secondItem="ryr-Iq-ZoR" secondAttribute="leading" constant="-5" id="y1Y-sc-Ebx"/>
                 </constraints>
             </tableViewCellContentView>

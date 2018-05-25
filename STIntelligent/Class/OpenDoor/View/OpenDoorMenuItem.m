@@ -12,9 +12,7 @@
 - (instancetype)init
 {
     if (self = [super init])
-    {        
-        self.clipsToBounds = NO;
-    
+    {                
         [self addSubview:self.imageView];
         [self addSubview:self.titleLabel];
         [self addSubview:self.subTitleLabel];
@@ -25,6 +23,7 @@
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self);
+            make.width.mas_equalTo(self);
             make.bottom.mas_equalTo(self.imageView.mas_top).offset(-2);
         }];
         
@@ -64,6 +63,8 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = Font_sys_12;
         _titleLabel.text = @"开么";
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _titleLabel;
 }

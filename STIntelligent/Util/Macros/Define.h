@@ -99,6 +99,10 @@
 #define MAOYAN_LIGHTENABLE_METHOD @"db_light_enable_result"
 #define MAOYAN_DEVICELIST_METHOD @"bdylist"
 
-
+#define ADD_KVO(o, k) [o addObserver:self forKeyPath:k options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil]
+#define REMOVE_KVO(o, k) [o removeObserver:self forKeyPath:k]
+#define ADD_NOTIFICATIOM(s, n, o) [[NSNotificationCenter defaultCenter] addObserver:self selector:s name:n object:o]
+#define REMOVE_NOTIFICATION(n, o) [[NSNotificationCenter defaultCenter] removeObserver:self name:n object:o]
+#define POST_NOTIFICATION(n, o) [[NSNotificationCenter defaultCenter] postNotificationName:n object:o]
 
 #endif /* Define_h */

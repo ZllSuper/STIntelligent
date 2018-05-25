@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"副卡开门";
+    self.title = @"新增副卡邀请";
     
 //    [self initRightNavigationItemWithTitle:@"邀请记录" target:self action:@selector(rightBtnAction)];
     
@@ -76,7 +76,8 @@
         ProgressHidden(selfWeak.view);
         if ([request.response.code integerValue] == 200)
         {
-            [WXApiRequestHandler sendLinkURL:request.response.data[@"WechatUrl"] TagName:@"" Title:@"" Description:@"" ThumbImage:ImageWithName(@"ShareIcon") InScene:WXSceneSession];
+            POST_NOTIFICATION(kRefreshViceCardListNotification, nil);
+            [WXApiRequestHandler sendLinkURL:request.response.data[@"WechatUrl"] TagName:@"" Title:@"副卡" Description:@"副卡开门钥匙" ThumbImage:ImageWithName(@"ShareIcon") InScene:WXSceneSession];
         }
         else
         {

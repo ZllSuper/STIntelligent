@@ -25,8 +25,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"开门记录";
-    
+    self.title = @"副卡邀请记录";
     
     [self.view addSubview:self.bottomBtn];
     [self.bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -62,7 +61,7 @@
 {
     if (!_tableView)
     {
-        _tableView = [[ViceCardHistoryTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[ViceCardHistoryTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate1 = self;
     }
     return _tableView;

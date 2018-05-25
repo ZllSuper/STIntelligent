@@ -142,6 +142,8 @@
             {
                 [selfWeak.navigationController dismissViewControllerAnimated:YES completion:nil];
             }
+            
+            POST_NOTIFICATION(kRefreshHomePageNotification, nil);
         }
         else
         {

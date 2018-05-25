@@ -131,6 +131,8 @@
         ProgressHidden(selfWeak.view);
         if ([request.response.code integerValue] == 200)
         {
+            ToastShowBottom(@"申请成功，请等待审核");
+            POST_NOTIFICATION(kRefreshCommunityListNotification, nil);
             [selfWeak.navigationController popViewControllerAnimated:YES];
         }
         else
@@ -146,6 +148,12 @@
 #pragma mark - action
 - (void)communityAddAction:(UIButton *)sender
 {
+    if (!self.chooseBuildModel)
+    {
+        ToastShowBottom(@"请选择楼栋编号");
+        return;
+    }
+    
     PCCommunityAlertView *content = [PCCommunityAlertView viewFromXIB];
     content.sureBtn.tag = 1;
     content.cancelBtn.tag = 2;
@@ -167,6 +175,7 @@
     {
         //取消添加
     }
+    [vc dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - tableViewDelegate dataSource
@@ -304,7 +313,9 @@
     if (!_headerView)
     {
         _headerView = [[PCCommunityAddHeaderView alloc] initWithFrame:CGRectMake(0, 0, DEF_SCREENWIDTH, 450 / 1080.0 * DEF_SCREENWIDTH)];
-        [_headerView.headerImageView bxh_imageWithUrlStr:self.weakModel.ImgUrl];
+        
+        NSString *ImgUrl = [self.weakModel.ImgUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
+        [_headerView.headerImageView bxh_imageWithUrlStr:ImgUrl];
         _headerView.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
         _headerView.headerImageView.clipsToBounds = YES;
     }

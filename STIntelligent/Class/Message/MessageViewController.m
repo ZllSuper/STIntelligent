@@ -113,7 +113,7 @@
 {
     if (!_alarmTableView)
     {
-        _alarmTableView = [[AlarmMessageTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _alarmTableView = [[AlarmMessageTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _alarmTableView.tableFooterView = [UIView new];
 
     }

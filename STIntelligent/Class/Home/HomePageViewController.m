@@ -88,7 +88,7 @@
         make.top.mas_equalTo(self.view);
         make.left.mas_equalTo(self.view);
         make.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(DEF_SCREENHEIGHT - 64 - 49);
+        make.height.mas_equalTo(DEF_SCREENHEIGHT - 64);
     }];
 
     [self.view addSubview:self.pageControl];
@@ -751,7 +751,7 @@
 {
     if (!_controlView)
     {
-        _controlView = [[HomePageControlView alloc] initWithFrame:CGRectMake(0, 0, DEF_SCREENWIDTH, DEF_SCREENHEIGHT - 64 - 49)];
+        _controlView = [[HomePageControlView alloc] init];
         _controlView.protcol = self;
     }
     return _controlView;

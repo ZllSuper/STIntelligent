@@ -18,8 +18,10 @@
 
 @end
 
-@interface ViceCardHistoryTableView : BaseTableView <ViceCardHistoryCellProtcol>
+@interface ViceCardHistoryTableView : BaseTableView <ViceCardHistoryCellProtcol, UIAlertViewDelegate>
 
 @property (nonatomic, weak) id<ViceCardHistoryTableViewDelegate> delegate1;
+
+@property (nonatomic, weak) TemporaryHistoryModel *delWeakModel;
 
 @end

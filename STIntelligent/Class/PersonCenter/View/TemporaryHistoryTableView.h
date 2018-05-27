@@ -15,6 +15,8 @@
 #import "WXApiRequestHandler.h"
 #import "WXApiManager.h"
 
-@interface TemporaryHistoryTableView : BaseTableView <TemporaryHistoryCellProtcol,WXApiManagerDelegate>
+@interface TemporaryHistoryTableView : BaseTableView <TemporaryHistoryCellProtcol,WXApiManagerDelegate, UIAlertViewDelegate>
+
+@property (nonatomic, weak) TemporaryHistoryModel *delWeakModel;
 
 @end

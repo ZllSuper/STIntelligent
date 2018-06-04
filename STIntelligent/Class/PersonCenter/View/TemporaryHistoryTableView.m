@@ -138,15 +138,15 @@
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 8;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.1;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 8;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 0.1;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -165,7 +165,11 @@
 {
     if (!cell.canIvi)
     {
-        [self delHistoryRequest:cell.weakModel];
+        self.delWeakModel = cell.weakModel;
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认要删除该临时卡授权吗" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alert.tag = 100;
+        [alert show];
     }
     else
     {
@@ -177,6 +181,17 @@
 - (void)refreshViceCardListNoti
 {
     [self requestViewSource:YES];
+}
+
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100) {
+        if (buttonIndex == 1) {
+            [self delHistoryRequest:self.delWeakModel];
+        }
+        self.delWeakModel = nil;
+    }
 }
 
 @end

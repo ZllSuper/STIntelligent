@@ -97,15 +97,15 @@
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 8;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.1;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 8;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 0.1;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -121,8 +121,12 @@
 }
 
 - (void)cellRigthBtnAction:(ViceCardHistoryCell *)cell
-{
-    [self delHistoryRequest:cell.weakModel];
+{    
+    self.delWeakModel = cell.weakModel;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认要删除该副卡授权吗" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.tag = 100;
+    [alert show];
 }
 
 
@@ -130,6 +134,17 @@
 - (void)refreshViceCardListNoti
 {
     [self requestViewSource:YES];
+}
+
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100) {
+        if (buttonIndex == 1) {
+            [self delHistoryRequest:self.delWeakModel];
+        }
+        self.delWeakModel = nil;
+    }
 }
 
 @end
